@@ -5,4 +5,4 @@ process:\
     - publish message to pubsub\
     - cloud function eventarc pubsub trigger\
     - pull creator and project\
-    - apply billing via SA\
+    - apply billing via SA
