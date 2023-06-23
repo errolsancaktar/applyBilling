@@ -1,4 +1,4 @@
-GCP cloud function to link billing to an account\
+GCP cloud function to link billing to an account
 
 process:\
     - sink to watch for project creation\
