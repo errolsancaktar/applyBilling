@@ -5,3 +5,5 @@ billingCode.zip
 .git/
 files/
 *.tfvars
+terraform*
+.vscode/
