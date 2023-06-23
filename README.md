@@ -1,6 +1,6 @@
-GCP cloud function to link billing to an account
+GCP cloud function to link billing to an account\
 
-process:
+process:\
     - sink to watch for project creation\
     - publish message to pubsub\
     - cloud function eventarc pubsub trigger\
