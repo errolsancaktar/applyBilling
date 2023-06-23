@@ -1,4 +1,7 @@
-
+provider "google" {
+  project = var.projectName
+  region  = var.location
+}
 
 
 data "google_iam_policy" "admin" {
@@ -52,7 +55,7 @@ resource "google_cloudfunctions2_function" "function" {
     runtime     = "nodejs16"
     entry_point = "helloPubSub" # Set the entry point 
     environment_variables = {
-      BUILD_CONFIG_TEST = "build_test"
+      LP_BILLING_ACCOUNT = var.billingAccount
     }
     source {
       storage_source {

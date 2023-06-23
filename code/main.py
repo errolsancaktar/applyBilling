@@ -1,12 +1,14 @@
 import base64
-import functions_framework
+import os
 import json
+import functions_framework
 from google.cloud import billing_v1
 
-
+billingAccount = os.environ['LP_BILLING_ACCOUNT']
 
 
 # Triggered from a message on a Cloud Pub/Sub topic.
+
 @functions_framework.cloud_event
 def hello_pubsub(cloud_event):
     # Print out the data from Pub/Sub, to prove that it worked
@@ -20,9 +22,11 @@ def hello_pubsub(cloud_event):
     print("Creator:")
     print(creation_user)
     fullProj = "projects/" + projectID
-    print(_is_billing_enabled(fullProj))
+    if (isBillingEnabled(fullProj)):
+        applyBilling(projectID, billingAccount)
 
-def _is_billing_enabled(project):
+
+def isBillingEnabled(project, billingAccount):
 
     billingClient = billing_v1.CloudBillingClient()
     request = billing_v1.GetProjectBillingInfoRequest(
@@ -33,3 +37,12 @@ def _is_billing_enabled(project):
     return response
 
 
+def applyBilling(project):
+
+    billingClient = billing_v1.CloudBillingClient()
+    request = billing_v1.UpdateBillingAccountRequest(
+        name=project,
+    )
+    response = billingClient.update_billing_account(request=request)
+
+    return response
