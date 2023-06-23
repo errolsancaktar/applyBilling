@@ -10,12 +10,13 @@ from google.cloud import billing_v1
 billingAccount = os.environ['LP_BILLING_ACCOUNT']
 
 ## Set Loglevel ##
-logging.setLevel("info")
+logging.basicConfig(level=logging.INFO)
+
 # Triggered from a message on a Cloud Pub/Sub topic.
 
 
 @functions_framework.cloud_event
-def hello_pubsub(cloud_event):
+def main(cloud_event):
     # Print out the data from Pub/Sub, to prove that it worked
     logData = json.loads(base64.b64decode(cloud_event.data["message"]["data"]))
     logging.debug("Log Output:")

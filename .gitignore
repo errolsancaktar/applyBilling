@@ -1,0 +1,7 @@
+billingCode.zip
+.terraform*
+.terraform/
+.vscode
+.git/
+files/
+*.tfvars
