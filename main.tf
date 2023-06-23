@@ -27,7 +27,7 @@ resource "google_service_account" "sa" {
 resource "google_organization_iam_member" "organization" {
   org_id  = var.orgID
   role    = "roles/billing.user"
-  member  = google_service_account.sa.name
+  member  = google_service_account.sa.email
 }
 
 resource "google_project_iam_member" "log-writer" {
