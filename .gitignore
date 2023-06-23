@@ -4,6 +4,7 @@ billingCode.zip
 .vscode
 .git/
 files/
+.DS_Store
 *.tfvars
 terraform*
 .vscode/
